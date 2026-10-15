@@ -1,11 +1,39 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=youkoso, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    ようこそ私のページへ！
-</body>
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#101827" />
+    <title>Sky Hop - 横スクロールアクション</title>
+    <link rel="stylesheet" href="style.css" />
+    <script src="game.js" defer></script>
+  </head>
+  <body>
+    <main class="game">
+      <header class="game__header">
+        <div>
+          <p class="eyebrow">SIDE-SCROLL ACTION MVP</p>
+          <h1>Sky Hop</h1>
+        </div>
+        <div class="score" aria-live="polite">
+          <span class="score__label">SCORE</span>
+          <strong id="score">00000</strong>
+        </div>
+      </header>
+
+      <section class="game__screen" aria-label="ゲーム画面">
+        <canvas id="game-canvas" width="960" height="500" aria-label="障害物をジャンプしてよけるゲーム"></canvas>
+        <div id="message" class="message" aria-live="polite">
+          <p class="message__tag">READY?</p>
+          <h2>走り出そう！</h2>
+          <p>ジャンプして障害物をよけよう</p>
+        </div>
+      </section>
+
+      <footer class="game__footer">
+        <p>操作：<kbd>Space</kbd> / <kbd>↑</kbd> / <kbd>W</kbd> または画面タップ</p>
+        <button id="jump-button" class="jump-button" type="button">JUMP</button>
+      </footer>
+    </main>
+  </body>
 </html>
