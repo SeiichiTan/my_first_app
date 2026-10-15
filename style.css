@@ -3,7 +3,7 @@
 :root {
   color-scheme: dark;
   font-family: "Outfit", "Noto Sans JP", sans-serif;
-  background: #101827;
+  background: #090817;
   color: #f5f7fb;
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -19,14 +19,16 @@ body {
   margin: 0;
   display: grid;
   place-items: center;
-  padding: 32px 20px;
+  padding: 36px 20px;
   background:
-    radial-gradient(ellipse at 50% 0%, rgb(62 93 145 / 24%), transparent 58%),
-    #101827;
+    radial-gradient(ellipse at 50% 10%, rgb(104 47 160 / 30%), transparent 48%),
+    radial-gradient(ellipse at 8% 80%, rgb(25 136 188 / 13%), transparent 38%),
+    #090817;
 }
 
 .game {
   width: min(100%, 960px);
+  animation: game-arrive 700ms cubic-bezier(0.2, 0.8, 0.2, 1) both;
 }
 
 .game__header,
@@ -37,14 +39,14 @@ body {
 }
 
 .game__header {
-  margin-bottom: 16px;
+  margin-bottom: 20px;
 }
 
 .eyebrow,
 .score__label,
 .message__tag {
   margin: 0;
-  color: #8ea4c4;
+  color: #9b91c8;
   font-size: 0.72rem;
   font-weight: 700;
   letter-spacing: 0.18em;
@@ -54,34 +56,50 @@ h1 {
   margin: 2px 0 0;
   font-size: clamp(1.7rem, 5vw, 2.35rem);
   line-height: 1;
+  letter-spacing: -0.04em;
+  background: linear-gradient(100deg, #fff 12%, #a4f8ff 48%, #ff8bd8 90%);
+  background-clip: text;
+  color: transparent;
+  filter: drop-shadow(0 0 16px rgb(101 230 255 / 34%));
 }
 
 .score {
   display: grid;
   justify-items: end;
-  gap: 2px;
+  gap: 5px;
+  min-width: 118px;
+  padding: 10px 15px;
+  border: 1px solid rgb(130 220 255 / 25%);
+  border-radius: 12px;
+  background: linear-gradient(135deg, rgb(24 31 64 / 88%), rgb(53 24 69 / 74%));
+  box-shadow: inset 0 1px rgb(255 255 255 / 8%), 0 0 24px rgb(102 84 255 / 12%);
 }
 
 .score strong {
-  color: #a7f3d0;
+  color: #a7fff0;
   font-size: 1.65rem;
   font-variant-numeric: tabular-nums;
   line-height: 1;
+  text-shadow: 0 0 14px rgb(90 255 225 / 56%);
 }
 
 .game__screen {
   position: relative;
   overflow: hidden;
-  border: 1px solid rgb(189 208 239 / 18%);
-  border-radius: 18px;
-  background: #9bdcf5;
-  box-shadow: 0 24px 70px rgb(0 0 0 / 32%);
+  border: 1px solid rgb(171 148 255 / 42%);
+  border-radius: 20px;
+  background: #17132e;
+  box-shadow:
+    0 0 0 5px rgb(79 55 130 / 12%),
+    0 24px 80px rgb(0 0 0 / 50%),
+    0 0 42px rgb(103 79 255 / 20%);
 }
 
 canvas {
   display: block;
   width: 100%;
   height: auto;
+  filter: saturate(1.14) contrast(1.03);
 }
 
 .message {
@@ -91,7 +109,8 @@ canvas {
   align-content: center;
   justify-items: center;
   padding: 24px;
-  background: rgb(16 24 39 / 38%);
+  background: linear-gradient(135deg, rgb(15 12 36 / 46%), rgb(35 14 55 / 40%));
+  backdrop-filter: blur(3px);
   text-align: center;
   transition: opacity 180ms ease;
 }
@@ -102,27 +121,29 @@ canvas {
 }
 
 .message__tag {
-  color: #a7f3d0;
+  color: #8fffee;
+  text-shadow: 0 0 14px rgb(100 255 235 / 55%);
 }
 
 .message h2 {
   margin: 8px 0;
   font-size: clamp(1.8rem, 6vw, 3rem);
+  text-shadow: 0 0 26px rgb(255 100 207 / 38%);
 }
 
 .message p:last-child {
   margin: 0;
-  color: #e2eaf5;
+  color: #ded6f5;
 }
 
 .game__footer {
   gap: 16px;
-  padding-top: 16px;
+  padding-top: 19px;
 }
 
 .game__footer p {
   margin: 0;
-  color: #aebbd0;
+  color: #b2aacd;
   font-size: 0.9rem;
 }
 
@@ -130,45 +151,87 @@ kbd {
   display: inline-block;
   min-width: 26px;
   padding: 3px 6px;
-  border: 1px solid #46536a;
+  border: 1px solid #59517a;
   border-radius: 5px;
-  background: #202c3f;
+  background: linear-gradient(180deg, #282641, #17172d);
   color: #f5f7fb;
   font: inherit;
   font-size: 0.78rem;
   text-align: center;
+  box-shadow: 0 2px 0 #0b0a19;
 }
 
 .jump-button {
   min-width: 100px;
-  padding: 11px 20px;
-  border: 0;
+  padding: 12px 22px;
+  border: 1px solid rgb(255 255 255 / 50%);
   border-radius: 999px;
-  background: #a7f3d0;
-  color: #102a2b;
+  background: linear-gradient(110deg, #63f4ed, #b9ff9a 48%, #ffe27d);
+  color: #15213a;
   cursor: pointer;
   font: inherit;
   font-weight: 800;
   letter-spacing: 0.08em;
   touch-action: manipulation;
+  box-shadow:
+    0 5px 0 #268f9b,
+    0 9px 22px rgb(66 255 231 / 23%),
+    inset 0 1px rgb(255 255 255 / 80%);
+  transition: transform 140ms ease, box-shadow 140ms ease, filter 140ms ease;
 }
 
 .jump-button:hover {
-  background: #c4f7df;
+  filter: brightness(1.1);
+  transform: translateY(-2px);
+  box-shadow:
+    0 7px 0 #268f9b,
+    0 12px 28px rgb(66 255 231 / 34%),
+    inset 0 1px rgb(255 255 255 / 80%);
 }
 
 .jump-button:active {
-  transform: translateY(1px);
+  transform: translateY(4px);
+  box-shadow: 0 1px 0 #268f9b, 0 3px 10px rgb(66 255 231 / 20%);
 }
 
 .jump-button:focus-visible {
-  outline: 3px solid #f5f7fb;
+  outline: 3px solid #ff8bd8;
   outline-offset: 3px;
+}
+
+@keyframes game-arrive {
+  from {
+    opacity: 0;
+    transform: translateY(14px) scale(0.99);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
 }
 
 @media (max-width: 520px) {
   body {
-    padding: 20px 14px;
+    padding: 24px 14px;
+  }
+
+  .game__header {
+    margin-bottom: 14px;
+  }
+
+  .game__screen {
+    border-radius: 14px;
   }
 
   .game__footer p {
